@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - "angular.json"
+      - "package*.json"
+      - "tsconfig*.json"
+      - "projects/**"
+      - ".github/workflows/ci.yml"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build UI
+        run: npm run build ui
+
+      - name: Build Docs
+        run: npm run build docs
