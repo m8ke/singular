@@ -1,0 +1,7 @@
+<button
+    [class.btn-xl]="size() === 'xs'"
+    [class.btn-sm]="size() === 'sm'"
+    [class.btn-lg]="size() === 'lg'"
+    class="cursor-pointer">
+    <ng-content/>
+</button>
