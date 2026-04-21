@@ -20,8 +20,10 @@ It is built on top of Tailwind CSS v4 and follows modern Angular and CSS standar
 
 ## Motivation
 
-I wanted something simple and lightweight (yes, subjective) for both personal and client projects 
-(mostly software as a service and internal tools) – something easy to use, keep all projects up-to-date and synced, 
+<sup><a href="#top">back to top</a></sup>
+
+I wanted something simple and lightweight (yes, subjective) for both personal and client projects
+(mostly software as a service and internal tools) – something easy to use, keep all projects up-to-date and synced,
 scalable, and customizable without constantly reinventing the wheel.
 
 Since I prefer focusing on back-end development and software architecture, I decided to build
@@ -36,10 +38,10 @@ Simply, this is a public development but feel free to contribute, open an issue,
 
 ### Requirements
 
-| Technology | Version |
-|------------|---------|
-| Angular    | 21.x    |
-| Tailwind   | 4.x     |
+| Technology   | Version |
+|--------------|---------|
+| Angular      | 21.x    |
+| Tailwind CSS | 4.x     |
 
 ### Install dependency
 
@@ -49,7 +51,7 @@ npm i @singular/ui
 
 ### Import CSS
 
-```sh
+```css
 @import "tailwindcss";
 @import "@singular/ui";
 ```
