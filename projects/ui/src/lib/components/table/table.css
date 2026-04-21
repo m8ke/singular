@@ -1,0 +1,90 @@
+@layer components {
+    @scope ([sg-table], .table) {
+        :scope {
+            @apply grid w-full overflow-hidden p-1 rounded-2xl bg-surface-secondary;
+        }
+
+        .overflow {
+            @apply w-full overflow-x-auto rounded-[inherit];
+            scrollbar-width: thin;
+
+            &::-webkit-scrollbar {
+                @apply h-1.5;
+            }
+        }
+
+        table {
+            @apply w-full min-w-full border-separate border-spacing-0 text-sm;
+
+            :is(th, td) {
+                @apply px-4 text-left whitespace-nowrap transition-colors duration-200;
+            }
+
+            thead {
+                @apply text-sm text-muted;
+
+                th {
+                    @apply py-3 font-medium relative;
+
+                    &::after {
+                        @apply content-[''] absolute right-0 top-1/2 h-4 w-px -translate-y-1/2 opacity-10 bg-separator;
+                    }
+
+                    &:last-child::after {
+                        @apply hidden;
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    @apply outline-none;
+
+                    td {
+                        @apply py-4 border-b bg-surface text-foreground border-separator-tertiary/50;
+                    }
+
+                    &:hover td {
+                        @apply bg-surface/40;
+                    }
+
+                    &[data-selected="true"] td {
+                        @apply bg-accent-soft;
+                    }
+
+                    &[data-disabled="true"] {
+                        @apply opacity-40 cursor-not-allowed select-none;
+                    }
+
+                    &:last-child td {
+                        @apply border-b-0;
+                    }
+                }
+
+                tr:first-child {
+                    td:first-child {
+                        @apply rounded-tl-xl;
+                    }
+
+                    td:last-child {
+                        @apply rounded-tr-xl;
+                    }
+                }
+
+                tr:last-child {
+                    td:first-child {
+                        @apply rounded-bl-xl;
+                    }
+
+                    td:last-child {
+                        @apply rounded-br-xl;
+                    }
+                }
+            }
+        }
+
+        footer {
+            @apply flex items-center justify-between px-4 py-3 text-sm font-medium text-muted;
+        }
+    }
+}

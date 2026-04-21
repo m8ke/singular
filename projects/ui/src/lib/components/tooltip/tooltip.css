@@ -1,0 +1,59 @@
+.tooltip {
+    @apply bg-background-inverse text-sm text-background rounded-lg fixed px-2 py-1.5 max-w-64 w-max text-center pointer-events-none z-1000 transition-all duration-150 ease-in opacity-0;
+
+    &.show {
+        @apply opacity-100 translate-x-0;
+    }
+
+    &::after {
+        @apply content-[''] absolute bg-background-inverse size-3 rotate-45 rounded-sm;
+    }
+
+    &.top {
+        @apply -mt-1;
+
+        &::after {
+            @apply left-1/2 -translate-x-1/2 -bottom-1;
+        }
+
+        &.show {
+            @apply translate-y-1;
+        }
+    }
+
+    &.bottom {
+        @apply mt-1;
+
+        &::after {
+            @apply left-1/2 -translate-x-1/2 -top-1;
+        }
+
+        &.show {
+            @apply -translate-y-1;
+        }
+    }
+
+    &.left {
+        @apply -ml-1;
+
+        &::after {
+            @apply top-1/2 -translate-y-1/2 -right-1;
+        }
+
+        &.show {
+            @apply translate-x-1;
+        }
+    }
+
+    &.right {
+        @apply ml-1;
+
+        &::after {
+            @apply top-1/2 -translate-y-1/2 -left-1;
+        }
+
+        &.show {
+            @apply -translate-x-1;
+        }
+    }
+}

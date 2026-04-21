@@ -1,1 +1,37 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import "tailwindcss";
+/*@import "@singular/ui";*/
+/*@import "../../../dist/ui/index.css";*/
+@import "../../ui/src/lib/styles/index.css";
+
+/* PROJECT-SPECIFIC STYLE */
+
+:root {
+    --font-sans: "Inter", sans-serif;
+}
+
+body {
+    font-style: normal;
+    font-optical-sizing: auto;
+}
+
+:where(h1, h2, h3, h4) {
+    @apply font-semibold;
+}
+
+h1 {
+    @apply text-3xl;
+}
+
+h2 {
+    @apply text-2xl;
+}
+
+h3 {
+    @apply text-xl;
+}
+
+h4 {
+    @apply text-lg;
+}

@@ -1,0 +1,41 @@
+<article class="guide">
+    <header>
+        <h1>
+            Label
+        </h1>
+
+        <p>
+            Gives the label a distinct look.
+        </p>
+    </header>
+
+    <section>
+        <section>
+            <h2 id="import">
+                Import
+            </h2>
+
+            <docs-code-area [code]="'code'" />
+        </section>
+
+        <section>
+            <h3 id="usage">
+                Usage
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <div class="flex flex-1 flex-col gap-1 max-w-75">
+                    <label sg-label for="first-name">
+                        First name
+                    </label>
+
+                    <input
+                        sg-input
+                        type="text"
+                        id="first-name"
+                    />
+                </div>
+            </section>
+        </section>
+    </section>
+</article>

@@ -1,0 +1,21 @@
+@scope ([sg-accordion-item], .accordion-item) {
+    :scope {
+        @apply overflow-hidden;
+    }
+
+    :is(button) {
+        @apply flex w-full flex-row items-center justify-between cursor-pointer transition px-4 py-3 gap-x-2;
+
+        > header, [sg-accordion-header] {
+            @apply flex flex-1;
+        }
+
+        > div {
+            @apply flex items-center justify-between transition;
+
+            span {
+                @apply transition-transform duration-300 transform-gpu will-change-transform text-lg;
+            }
+        }
+    }
+}

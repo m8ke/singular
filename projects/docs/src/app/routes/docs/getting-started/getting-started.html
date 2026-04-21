@@ -1,0 +1,19 @@
+<section docs-layout>
+    <nav docs-sidebar>
+        <strong class="block font-medium mb-2 px-3">
+            Overview
+        </strong>
+
+        <ul class="grid gap-y-px">
+            @for (route of getRoutePaths(); track route.path) {
+                <li [routerLink]="route.path"
+                    routerLinkActive="bg-surface-secondary text-foreground!"
+                    [routerLinkActiveOptions]="{ exact: true }">
+                    {{ route.title }}
+                </li>
+            }
+        </ul>
+    </nav>
+
+    <router-outlet />
+</section>

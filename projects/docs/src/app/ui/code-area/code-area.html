@@ -1,0 +1,21 @@
+<button
+    class="copy-button"
+    (click)="copyToClipboard()">
+    @if (copied()) {
+        <svg lucideCheck />
+    } @else {
+        <svg lucideCopy />
+    }
+</button>
+
+@if (showLines()) {
+    <div class="lines">
+        @for (_ of lines(); track $index) {
+            <span class="leading-6">{{ $index + 1 }}</span>
+        }
+    </div>
+}
+
+<div class="content">
+    <pre class="leading-6 whitespace-pre focus:outline-none"><code>{{ code().trim() }}</code></pre>
+</div>

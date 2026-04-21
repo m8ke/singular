@@ -1,7 +1,6 @@
-<button
-    [class.btn-xl]="size() === 'xs'"
-    [class.btn-sm]="size() === 'sm'"
-    [class.btn-lg]="size() === 'lg'"
-    class="cursor-pointer">
-    <ng-content/>
-</button>
+@if (!pending()) {
+    <ng-content />
+} @else {
+    <span sg-spinner></span>
+    {{ pendingText() }}
+}

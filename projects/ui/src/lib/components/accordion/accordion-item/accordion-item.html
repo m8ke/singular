@@ -1,0 +1,16 @@
+<button (click)="onToggle()">
+    <ng-content select="[sg-accordion-header]" />
+
+    <div>
+        <span [class.rotate-45]="isOpen()">&plus;</span>
+    </div>
+</button>
+
+<div
+    class="grid transition-all duration-300 ease-in-out"
+    [class.grid-rows-[1fr]]="isOpen()"
+    [class.grid-rows-[0fr]]="!isOpen()">
+    <div class="overflow-hidden">
+        <ng-content select="[sg-accordion-content]" />
+    </div>
+</div>

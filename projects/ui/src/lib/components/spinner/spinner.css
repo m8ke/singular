@@ -1,0 +1,5 @@
+@scope([sg-spinner], .spinner) {
+    :is(svg) {
+        @apply size-[1.25em] align-middle animate-spin stroke-[currentColor];
+    }
+}

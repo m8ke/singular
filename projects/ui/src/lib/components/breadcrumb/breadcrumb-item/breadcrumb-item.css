@@ -1,0 +1,26 @@
+@scope([sg-breadcrumb-item], .breadcrumb-item) {
+    :scope {
+    }
+
+    .content {
+        @apply inline-block cursor-pointer rounded-lg px-1.5 py-1 transition-colors;
+
+        &:hover {
+            @apply cursor-pointer bg-(--color-default);
+        }
+    }
+
+    &.active {
+        .content {
+            @apply pointer-events-none cursor-pointer bg-(--color-default);
+        }
+    }
+
+    .separator {
+        @apply select-none;
+    }
+
+    &:last-child .separator {
+        @apply hidden;
+    }
+}

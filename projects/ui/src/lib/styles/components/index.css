@@ -1,0 +1,37 @@
+/*
+ * Public CSS Surface of UI
+ *
+ * This is unconventional for a workaround. All component styles should be imported here.
+ */
+
+@import "./../../components/accordion/accordion.css";
+@import "./../../components/accordion/accordion-content/accordion-content.css";
+@import "./../../components/accordion/accordion-header/accordion-header.css";
+@import "./../../components/accordion/accordion-item/accordion-item.css";
+
+@import "./../../components/breadcrumb/breadcrumb.css";
+@import "./../../components/breadcrumb/breadcrumb-item/breadcrumb-item.css";
+
+@import "./../../components/button/button.css";
+
+@import "./../../components/dialog/dialog.css";
+
+@import "./../../components/helper/helper.css";
+@import "./../../components/input/input.css";
+@import "./../../components/label/label.css";
+
+@import "./../../components/spinner/spinner.css";
+
+@import "./../../components/tab/tab.css";
+@import "./../../components/tab/tab-item/tab-item.css";
+
+@import "./../../components/table/table.css";
+@import "./../../components/table/table-body/table-body.css";
+@import "./../../components/table/table-cell/table-cell.css";
+@import "./../../components/table/table-column/table-column.css";
+@import "./../../components/table/table-footer/table-footer.css";
+@import "./../../components/table/table-header/table-header.css";
+@import "./../../components/table/table-row/table-row.css";
+
+@import "./../../components/tooltip/tooltip.css";
+

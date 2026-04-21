@@ -1,0 +1,75 @@
+@scope([sg-input], .input) {
+    :scope {
+        @apply
+        rounded-field px-3 py-2.5 h-9 min-h-9
+        border bg-field shadow-field
+        text-base text-field-foreground outline-none
+        placeholder:text-field-placeholder
+        sm:text-sm;
+
+        border-color: var(--color-field-border);
+        border-width: var(--border-width-field);
+
+        transition: background-color 150ms var(--ease-smooth),
+        border-color 150ms var(--ease-smooth),
+        box-shadow 150ms var(--ease-out);
+
+        @apply motion-reduce:transition-none;
+
+        @media (hover: hover) {
+            &:hover:not(:focus):not(:focus-visible),
+            &[data-hovered="true"]:not([data-focused="true"]):not([data-focus-visible="true"]) {
+                @apply bg-field-hover;
+                border-color: var(--color-field-border-hover);
+            }
+        }
+
+        &:is(:focus, [data-focused="true"]) {
+            @apply focus-input-ring;
+            border-color: var(--color-field-border-focus);
+            background-color: var(--color-field-focus);
+            outline: 2px solid var(--accent);
+        }
+
+        &[data-invalid="true"] {
+            @apply bg-(--color-field-focus);
+        }
+
+        .disabled,
+        :disabled,
+        [disabled],
+        [data-disabled="true"],
+        [aria-disabled="true"] {
+            @apply status-disabled;
+        }
+    }
+
+    &.variant-primary {
+    }
+
+    &.variant-secondary {
+        @apply shadow-none;
+
+        --input-bg: var(--color-default);
+        --input-bg-hover: var(--color-default-hover);
+        --input-bg-focus: var(--color-default);
+
+        background-color: var(--input-bg);
+
+        @media (hover: hover) {
+            &:hover:not(:focus):not(:focus-visible),
+            &[data-hovered="true"]:not([data-focus-visible="true"]):not([data-focused="true"]) {
+                background-color: var(--input-bg-hover);
+            }
+        }
+
+        &:is(:focus, [data-focused="true"]) {
+            background-color: var(--input-bg-focus);
+        }
+
+        &[data-invalid="true"] {
+            @apply invalid-input-ring;
+            background-color: var(--input-bg-focus);
+        }
+    }
+}

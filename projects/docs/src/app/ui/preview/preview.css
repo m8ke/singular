@@ -1,0 +1,11 @@
+@reference "tailwindcss";
+
+@scope (.preview) {
+    :scope {
+        @apply divide-y divide-[var(--border)] border border-[var(--border)] rounded-2xl;
+
+        > .content {
+            @apply flex justify-center items-center gap-2 lg:flex-row flex-col size-full p-10 min-h-80;
+        }
+    }
+}

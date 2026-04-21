@@ -1,0 +1,5 @@
+@scope ([sg-accordion], .accordion) {
+    :scope {
+        @apply grid divide-y divide-border border border-border rounded-2xl;
+    }
+}

@@ -1,20 +1,21 @@
+import { provideRouter, withInMemoryScrolling } from "@angular/router";
 import { provideClientHydration, withEventReplay } from "@angular/platform-browser";
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from "@angular/core";
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from "@angular/router";
 
-import { routes } from "@singular/docs/app.routes";
-import { provideSingular } from "@singular/ui";
+import { routes } from "@/docs/app.routes";
+import { provideLucideConfig } from "@lucide/angular";
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideSingular({
-            style: "singular",
+        provideLucideConfig({
+            size: 16,
+            strokeWidth: 1.75,
         }),
         provideRouter(
             routes,
-            withViewTransitions(),
             withInMemoryScrolling({
-                scrollPositionRestoration: "top",
+                anchorScrolling: "enabled",
+                scrollPositionRestoration: "enabled",
             }),
         ),
         provideBrowserGlobalErrorListeners(),

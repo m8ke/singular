@@ -1,0 +1,43 @@
+<article class="guide">
+    <header>
+        <h1>
+            Breadcrumb
+        </h1>
+
+        <p>
+            Shows the path to the current resource using a hierarchy of links.
+        </p>
+    </header>
+
+    <section>
+        <section>
+            <h2 id="import">
+                Import
+            </h2>
+
+            <docs-code-area [code]="'code'" />
+        </section>
+
+        <section>
+            <h3 id="usage">
+                Usage
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <ul sg-breadcrumb>
+                    <li sg-breadcrumb-item routerLink="/docs" [routerLinkActiveOptions]="{ exact: true }">
+                        Docs
+                    </li>
+
+                    <li sg-breadcrumb-item routerLink="/docs/components" [routerLinkActiveOptions]="{ exact: true }">
+                        Components
+                    </li>
+
+                    <li sg-breadcrumb-item routerLink="/docs/components/breadcrumb" [routerLinkActiveOptions]="{ exact: true }">
+                        Breadcrumb
+                    </li>
+                </ul>
+            </section>
+        </section>
+    </section>
+</article>

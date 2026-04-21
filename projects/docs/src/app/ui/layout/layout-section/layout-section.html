@@ -1,0 +1,32 @@
+<section [attr.data-level]="level()">
+    @switch (headingTag) {
+        @case ('h2') {
+            <h2 [id]="id">{{ section().title }}</h2>
+        }
+        @case ('h3') {
+            <h3 [id]="id">{{ section().title }}</h3>
+        }
+        @default {
+            <h4 [id]="id">{{ section().title }}</h4>
+        }
+    }
+
+    @if (section().description) {
+        <p>{{ section().description }}</p>
+    }
+
+    @if (section().component) {
+        <section docs-preview [code]="section().code">
+            <ng-container [ngComponentOutlet]="section().component"/>
+        </section>
+    }
+
+    @if (section().children?.length) {
+        @for (child of section().children; track child) {
+            <section docs-layout-section
+                [section]="child"
+                [level]="nextLevel"
+            ></section>
+        }
+    }
+</section>
