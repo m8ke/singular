@@ -1,0 +1,21 @@
+@scope([sg-tab-item], .tab-item) {
+    :scope {
+        @apply
+        inline-block cursor-pointer border-b-2 border-transparent border-solid py-2
+        transform-gpu motion-reduce:transition-none;
+
+        transition: border-bottom-color 250ms var(--ease-in-out),
+        transform 250ms var(--ease-in-out),
+        background-color 100ms var(--ease-out),
+        box-shadow 100ms var(--ease-out);
+    }
+
+    &.active,
+    &:hover {
+        @apply border-b-(--foreground);
+    }
+
+    &.active {
+        @apply pointer-events-none cursor-default;
+    }
+}

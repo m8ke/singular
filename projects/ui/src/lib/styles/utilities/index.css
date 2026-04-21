@@ -1,0 +1,41 @@
+@utility focus-base {
+    @apply ring-2 outline-none ring-offset-0;
+}
+
+@utility focus-ring {
+    @apply focus-base ring-focus ring-offset-background;
+    --tw-ring-offset-width: var(--ring-offset-width);
+}
+
+@utility focus-input-ring {
+    @apply focus-base ring-focus;
+    --tw-ring-offset-width: 0px;
+}
+
+@utility invalid-input-ring {
+    @apply outline-1 outline-danger outline-solid;
+    --tw-ring-offset-width: 3px;
+
+    &:is(
+    :focus,
+    :focus-within,
+    :focus-visible,
+    [data-focused="true"],
+    [data-focus-within="true"],
+    [data-focus-visible="true"]) {
+        @apply ring-2 ring-danger ring-offset-0 outline-none;
+        --tw-ring-offset-width: 0px;
+    }
+}
+
+@utility no-highlight {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@utility status-disabled {
+    @apply pointer-events-none cursor-not-allowed opacity-(--disabled-opacity);
+}
+
+@utility status-pending {
+    @apply pointer-events-none;
+}

@@ -1,0 +1,5 @@
+@scope([sg-label], .label) {
+    :scope {
+        @apply block font-semibold;
+    }
+}

@@ -1,0 +1,4 @@
+@scope ([sg-accordion-header], .accordion-header) {
+    :scope {
+    }
+}

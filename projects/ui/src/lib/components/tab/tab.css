@@ -1,0 +1,5 @@
+@scope([sg-tab], .tab) {
+    :scope {
+        @apply flex flex-row gap-x-4;
+    }
+}

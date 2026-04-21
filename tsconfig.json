@@ -15,11 +15,13 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
+      "@/docs/*": ["./projects/docs/src/app/*"],
       "@singular/ui": ["./projects/ui/src/public-api.ts"],
-      "@singular/docs/*": ["./projects/docs/src/app/*"]
+//      "@singular/ui": ["./node_modules/@singular/ui"]
     }
   },
   "angularCompilerOptions": {
+    "preserveSymlinks": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

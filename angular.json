@@ -37,7 +37,7 @@
       "schematics": {},
       "root": "projects/docs",
       "sourceRoot": "projects/docs/src",
-      "prefix": "app",
+      "prefix": "docs",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -50,7 +50,9 @@
                 "input": "projects/docs/public"
               }
             ],
-            "styles": ["projects/docs/src/styles.css"],
+            "styles": [
+              "projects/docs/src/styles.css"
+            ],
             "server": "projects/docs/src/main.server.ts",
             "outputMode": "server",
             "security": {

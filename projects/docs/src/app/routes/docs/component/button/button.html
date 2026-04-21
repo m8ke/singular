@@ -1,0 +1,167 @@
+<article class="guide">
+    <header>
+        <h1>
+            Button
+        </h1>
+
+        <p>
+            A clickable button component with multiple variants and states.
+        </p>
+    </header>
+
+    <section>
+        <section>
+            <h2 id="import">
+                Import
+            </h2>
+
+            <docs-code-area [code]="'code'" />
+        </section>
+
+        <section>
+            <h3 id="usage">
+                Usage
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button>
+                    Click here
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="variants">
+                Variants
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button>
+                    Primary
+                </button>
+
+                <button sg-button variant="secondary">
+                    Secondary
+                </button>
+
+                <button sg-button variant="tertiary">
+                    Tertiary
+                </button>
+
+                <button sg-button variant="outline">
+                    Outline
+                </button>
+
+                <button sg-button variant="ghost">
+                    Ghost
+                </button>
+
+                <button sg-button variant="danger">
+                    Danger
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="radius">
+                Radius
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button radius="full">
+                    Pill
+                </button>
+
+                <button sg-button>
+                    Classic
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="icon">
+                With icon
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button radius="full">
+                    <svg lucideRocket />
+                    Launch
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="size">
+                Size
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button size="sm">
+                    Small
+                </button>
+
+                <button sg-button size="md">
+                    Default
+                </button>
+
+                <button sg-button size="lg">
+                    Large
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="icon-only">
+                Icon only
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button [isIcon]="true" radius="full" size="sm" variant="danger">
+                    <svg lucideTrash2 />
+                </button>
+
+                <button sg-button [isIcon]="true" radius="full" size="md" variant="outline">
+                    <svg lucideSettings2 />
+                </button>
+
+                <button sg-button [isIcon]="true" radius="full" size="lg">
+                    <svg lucideBrainCircuit />
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="loader">
+                Loader
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button [pending]="true" pendingText="Searching..." variant="ghost">
+                    Search!
+                </button>
+
+                <button sg-button [pending]="true" pendingText="Sending...">
+                    Send message
+                </button>
+
+                <button sg-button [pending]="isButtonLoading()" (click)="setButtonLoading()" pendingText="Logging..."
+                        variant="outline">
+                    Log in
+                </button>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="disabled">
+                Disabled
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <button sg-button [disabled]="true">
+                    Oh no!
+                </button>
+            </section>
+        </section>
+    </section>
+</article>

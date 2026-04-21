@@ -1,0 +1,185 @@
+<article class="guide">
+    <header>
+        <h1>
+            Input
+        </h1>
+
+        <p>
+            Composition-friendly input with labels, descriptions, and inline validation.
+        </p>
+    </header>
+
+    <section>
+        <section>
+            <h2 id="import">
+                Import
+            </h2>
+
+            <docs-code-area [code]="'code'" />
+        </section>
+
+        <section>
+            <h3 id="usage">
+                Usage
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <div class="flex flex-1 flex-col gap-1 max-w-75">
+                    <label sg-label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        sg-input
+                        id="name"
+                        type="text"
+                        placeholder="How do we call you?"
+                    />
+
+                    <small sg-helper>
+                        We never share your data with anyone else
+                    </small>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="different-types">
+                Different types
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <div class="flex flex-col gap-4 w-75">
+                    <div class="flex flex-1 flex-col gap-1 max-w-75">
+                        <label sg-label for="nickname">
+                            Nickname
+                        </label>
+
+                        <input
+                            sg-input
+                            id="nickname"
+                            type="text"
+                            placeholder="Joe"
+                        />
+                    </div>
+
+                    <div class="flex flex-1 flex-col gap-1 max-w-75">
+                        <label sg-label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            sg-input
+                            id="email"
+                            type="email"
+                            placeholder="email@acme.ltd"
+                        />
+                    </div>
+
+                    <div class="flex flex-1 flex-col gap-1 max-w-75">
+                        <label sg-label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            sg-input
+                            id="password"
+                            type="password"
+                            value="my-pass"
+                        />
+                    </div>
+
+                    <div class="flex flex-1 flex-col gap-1 max-w-75">
+                        <label sg-label for="phone">
+                            Phone
+                        </label>
+
+                        <input
+                            sg-input
+                            id="phone"
+                            type="tel"
+                            placeholder="(+372) 555 5555"
+                        />
+                    </div>
+
+                    <div class="flex flex-1 flex-col gap-1 max-w-75">
+                        <label sg-label for="website">
+                            Website
+                        </label>
+
+                        <input
+                            sg-input
+                            id="website"
+                            type="url"
+                            placeholder="https://acme.ltd"
+                        />
+                    </div>
+
+                    <div class="flex flex-1 flex-col gap-1 max-w-75">
+                        <label sg-label for="grade">
+                            Grade
+                        </label>
+
+                        <input
+                            sg-input
+                            id="grade"
+                            type="number"
+                            value="1"
+                        />
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="disabled">
+                Disabled
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <div class="flex flex-1 flex-col gap-1 max-w-75">
+                    <label sg-label for="personal-id">
+                        Personal ID
+                    </label>
+
+                    <input
+                        sg-input
+                        id="personal-id"
+                        type="text"
+                        value="39108049000"
+                        [disabled]="true"
+                    />
+
+                    <small sg-helper>
+                        This field cannot be edited
+                    </small>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="textarea">
+                Textarea
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <div class="flex flex-1 flex-col gap-1 max-w-75">
+                    <label sg-label for="bio">
+                        Bio
+                    </label>
+
+                    <textarea
+                        sg-input
+                        id="bio"
+                        placeholder="Tell us about yourself"
+                        [rows]="4"
+                    ></textarea>
+
+                    <small sg-helper>
+                        You can change it later
+                    </small>
+                </div>
+            </section>
+        </section>
+    </section>
+</article>

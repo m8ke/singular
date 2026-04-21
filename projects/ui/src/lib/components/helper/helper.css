@@ -1,0 +1,5 @@
+@scope([sg-helper], .helper) {
+    :scope {
+        @apply block;
+    }
+}
