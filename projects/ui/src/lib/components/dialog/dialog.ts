@@ -36,8 +36,8 @@ export class Dialog implements OnChanges {
 
     private startedInsidePanel = signal<boolean>(false);
     private readonly rendererFactory = inject(RendererFactory2);
-    private readonly renderer: Renderer2 = this.rendererFactory.createRenderer(null, null);
     private readonly document: Document = inject(DOCUMENT);
+    private readonly renderer: Renderer2 = this.rendererFactory.createRenderer(null, null);
 
     public ngOnChanges(changes: SimpleChanges<Dialog>): void {
         if (changes.open?.currentValue) {

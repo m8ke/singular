@@ -13,7 +13,7 @@
         }
 
         > .content {
-            @apply fixed bg-overlay shadow-lg transition-transform duration-300;
+            @apply fixed bg-overlay shadow-lg transition-transform duration-300 overflow-y-auto;
         }
 
         &.placement-left {
