@@ -37,7 +37,7 @@ export class InputOtp implements AfterViewInit, ControlValueAccessor {
 
     private readonly value = computed(() => this.values().join(""));
 
-    constructor() {
+    public constructor() {
         effect(() => {
             const length = this.digits();
             this.values.set(new Array(length).fill(""));
