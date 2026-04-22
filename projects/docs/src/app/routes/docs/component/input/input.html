@@ -181,5 +181,27 @@
                 </div>
             </section>
         </section>
+
+        <section>
+            <h3 id="otp">
+                OTP
+            </h3>
+
+            <section docs-preview [code]="'code'">
+                <div class="flex flex-1 flex-col gap-1 max-w-75">
+                    <label sg-label for="name">
+                        Enter 6-digit code from email
+                    </label>
+
+                    <sg-input-otp
+                        [digits]="6"
+                    />
+
+                    <small sg-helper>
+                        Do not share this code with anyone
+                    </small>
+                </div>
+            </section>
+        </section>
     </section>
 </article>

@@ -4,18 +4,9 @@ import { LucideBrainCircuit, LucideRocket, LucideSettings2, LucideTrash2 } from 
 import { Button } from "@singular/ui";
 
 import { Preview } from "@/docs/ui/preview/preview";
-import { CodeArea } from "@/docs/ui/code-area/code-area";
 
 @Component({
-    imports: [
-        CodeArea,
-        Preview,
-        Button,
-        LucideRocket,
-        LucideBrainCircuit,
-        LucideSettings2,
-        LucideTrash2,
-    ],
+    imports: [Preview, Button, LucideRocket, LucideBrainCircuit, LucideSettings2, LucideTrash2],
     styleUrl: "./button.css",
     templateUrl: "./button.html",
     encapsulation: ViewEncapsulation.None,

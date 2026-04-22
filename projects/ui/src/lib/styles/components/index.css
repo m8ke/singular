@@ -23,7 +23,10 @@
 @import "./../../components/drawer/drawer-content/drawer-content.css";
 
 @import "./../../components/helper/helper.css";
+
 @import "./../../components/input/input.css";
+@import "./../../components/input-otp/input-otp.css";
+
 @import "./../../components/label/label.css";
 
 @import "./../../components/spinner/spinner.css";

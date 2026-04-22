@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Helper, Input, Label } from "@singular/ui";
+import { Helper, Input, InputOtp, Label } from "@singular/ui";
 
 import { Preview } from "@/docs/ui/preview/preview";
 import { CodeArea } from "@/docs/ui/code-area/code-area";
@@ -7,6 +7,6 @@ import { CodeArea } from "@/docs/ui/code-area/code-area";
 @Component({
     styleUrl: "./input.css",
     templateUrl: "./input.html",
-    imports: [CodeArea, Preview, Input, Label, Helper],
+    imports: [CodeArea, Preview, Input, Label, Helper, InputOtp],
 })
 export class ComponentInput {}

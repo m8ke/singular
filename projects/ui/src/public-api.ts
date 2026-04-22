@@ -22,7 +22,10 @@ export * from "./lib/components/drawer/drawer-footer/drawer-footer";
 export * from "./lib/components/drawer/drawer-content/drawer-content";
 
 export * from "./lib/components/helper/helper";
+
 export * from "./lib/components/input/input";
+export * from "./lib/components/input-otp/input-otp";
+
 export * from "./lib/components/label/label";
 
 export * from "./lib/components/spinner/spinner";
