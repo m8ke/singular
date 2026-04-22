@@ -1,16 +1,4 @@
-import {
-    Component,
-    DOCUMENT,
-    HostListener,
-    inject,
-    input,
-    model,
-    OnChanges,
-    Renderer2,
-    RendererFactory2,
-    SimpleChanges,
-    ViewEncapsulation,
-} from "@angular/core";
+import { Component, DOCUMENT, effect, HostListener, inject, input, model, ViewEncapsulation } from "@angular/core";
 
 @Component({
     selector: "[sg-drawer]",
@@ -25,20 +13,17 @@ import {
         "[class.placement-bottom]": "placement() === 'bottom'",
     },
 })
-export class Drawer implements OnChanges {
+export class Drawer {
     public readonly open = model<boolean>(false);
     public readonly dismissable = input<boolean>(true);
     public readonly placement = input<"top" | "right" | "bottom" | "left">("right");
 
     private readonly document: Document = inject(DOCUMENT);
-    private readonly renderer: Renderer2 = inject(RendererFactory2).createRenderer(null, null);
 
-    public ngOnChanges(changes: SimpleChanges<Drawer>): void {
-        if (changes.open?.currentValue) {
-            this.renderer.setStyle(this.document.body, "overflow", "hidden");
-        } else {
-            this.renderer.removeStyle(this.document.body, "overflow");
-        }
+    public constructor() {
+        effect((): void => {
+            this.document.body.style.overflow = this.open() ? "hidden" : "";
+        });
     }
 
     protected onBackdropClick(): void {
