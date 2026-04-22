@@ -1,59 +1,55 @@
 @scope ([sg-drawer], .drawer) {
     :scope {
-        @apply relative w-full z-50;
+        @apply relative w-full z-99;
 
-        > .overlay {
-            @apply fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300;
+        .backdrop {
+            @apply fixed inset-0 bg-backdrop opacity-0 pointer-events-none transition-opacity duration-300;
         }
 
-        &.open {
-            > .overlay {
-                @apply opacity-100 pointer-events-auto;
-            }
+        .content {
+            @apply fixed z-100 bg-overlay shadow-lg overflow-y-auto
+            transition-[transform] duration-300;
+
+            --x: 0;
+            --y: 0;
+
+            transform: translate(var(--x), var(--y));
         }
 
-        > .content {
-            @apply fixed bg-overlay shadow-lg transition-transform duration-300 overflow-y-auto;
+        &.open > .backdrop {
+            @apply opacity-100 pointer-events-auto;
         }
 
-        &.placement-left {
-            > .content {
-                @apply top-0 left-0 h-full w-[90%] min-[500px]:w-72 -translate-x-full;
-            }
-
-            &.open > .content {
-                @apply translate-x-0;
-            }
+        &.placement-left .content {
+            @apply top-0 left-0 h-full w-[90%] min-[500px]:w-96;
+            --x: -100%;
+            --y: 0;
         }
 
-        &.placement-right {
-            > .content {
-                @apply top-0 right-0 left-auto h-full w-[90%] min-[500px]:w-72 translate-x-full;
-            }
-
-            &.open > .content {
-                @apply translate-x-0;
-            }
+        &.placement-right .content {
+            @apply top-0 right-0 left-auto h-full w-[90%] min-[500px]:w-96;
+            --x: 100%;
+            --y: 0;
         }
 
-        &.placement-bottom {
-            > .content {
-                @apply bottom-0 left-0 w-full h-auto max-h-96 translate-y-full rounded-t-3xl;
-            }
-
-            &.open > .content {
-                @apply translate-y-0;
-            }
+        &.placement-top .content {
+            @apply top-0 left-0 w-full h-auto max-h-96 rounded-b-3xl;
+            --x: 0;
+            --y: -100%;
         }
 
-        &.placement-top {
-            > .content {
-                @apply top-0 left-0 w-full h-auto max-h-96 -translate-y-full rounded-b-3xl;
-            }
+        &.placement-bottom .content {
+            @apply bottom-0 left-0 w-full h-auto max-h-96 rounded-t-3xl;
+            --x: 0;
+            --y: 100%;
+        }
 
-            &.open > .content {
-                @apply translate-y-0;
-            }
+        &.open.placement-left .content,
+        &.open.placement-right .content,
+        &.open.placement-top .content,
+        &.open.placement-bottom .content {
+            --x: 0;
+            --y: 0;
         }
     }
 }

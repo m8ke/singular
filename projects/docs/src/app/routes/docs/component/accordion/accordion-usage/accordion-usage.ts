@@ -10,9 +10,9 @@ import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "@singu
                         {{ item.title }}
                     </header>
 
-                    <div sg-accordion-body>
+                    <article sg-accordion-body>
                         {{ item.content }}
-                    </div>
+                    </article>
                 </li>
             }
         </ul>
