@@ -2,6 +2,14 @@
     :scope {
         @apply fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300;
 
+        &.open {
+            @apply opacity-100 pointer-events-auto;
+        }
+
+        &.close {
+            @apply opacity-0 pointer-events-none;
+        }
+
         > .backdrop {
             @apply fixed inset-0 bg-backdrop opacity-0 pointer-events-none transition-opacity duration-300;
         }
