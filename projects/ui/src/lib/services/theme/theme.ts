@@ -1,14 +1,11 @@
-import { DOCUMENT, inject, Injectable, Renderer2, RendererFactory2, signal } from "@angular/core";
+import { DOCUMENT, inject, Injectable, signal } from "@angular/core";
 
 @Injectable({
     providedIn: "root",
 })
 export class Theme {
-    public readonly activeTheme = signal<"light" | "dark">("light");
-
-    private readonly rendererFactory = inject(RendererFactory2);
-    private readonly renderer: Renderer2 = this.rendererFactory.createRenderer(null, null);
     private readonly document: Document = inject(DOCUMENT);
+    public readonly activeTheme = signal<"light" | "dark">(this.document.documentElement.getAttribute("data-theme") as "light" | "dark");
 
     public toggleTheme(): void {
         const next = this.activeTheme() === "light" ? "dark" : "light";
@@ -17,6 +14,6 @@ export class Theme {
 
     public setTheme(theme: "light" | "dark"): void {
         this.activeTheme.set(theme);
-        this.renderer.setAttribute(this.document.documentElement, "data-theme", theme);
+        this.document.documentElement.setAttribute("data-theme", theme);
     }
 }
