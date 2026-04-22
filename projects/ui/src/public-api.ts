@@ -19,6 +19,7 @@ export * from "./lib/components/drawer/drawer";
 export * from "./lib/components/drawer/drawer-body/drawer-body";
 export * from "./lib/components/drawer/drawer-header/drawer-header";
 export * from "./lib/components/drawer/drawer-footer/drawer-footer";
+export * from "./lib/components/drawer/drawer-content/drawer-content";
 
 export * from "./lib/components/helper/helper";
 export * from "./lib/components/input/input";

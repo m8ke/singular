@@ -20,6 +20,7 @@
 @import "./../../components/drawer/drawer-body/drawer-body.css";
 @import "./../../components/drawer/drawer-header/drawer-header.css";
 @import "./../../components/drawer/drawer-footer/drawer-footer.css";
+@import "./../../components/drawer/drawer-content/drawer-content.css";
 
 @import "./../../components/helper/helper.css";
 @import "./../../components/input/input.css";

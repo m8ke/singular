@@ -1,5 +1,5 @@
 import { Component, signal } from "@angular/core";
-import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader } from "@singular/ui";
+import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@singular/ui";
 
 @Component({
     template: `
@@ -8,7 +8,7 @@ import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader } from "@singula
         </button>
 
         <section sg-drawer [(open)]="drawer" placement="right">
-            <div class="flex flex-col gap-2 p-5 h-full">
+            <div sg-drawer-content>
                 <header sg-drawer-header>
                     <h3>Drawer</h3>
                 </header>
@@ -33,7 +33,7 @@ import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader } from "@singula
             </div>
         </section>
     `,
-    imports: [Button, Drawer, DrawerHeader, DrawerBody, DrawerFooter],
+    imports: [Button, Drawer, DrawerHeader, DrawerBody, DrawerFooter, DrawerContent],
 })
 export class DrawerUsage {
     protected readonly drawer = signal<boolean>(false);
