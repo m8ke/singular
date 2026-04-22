@@ -6,28 +6,26 @@ import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader } from "@singula
         <button sg-button (click)="drawer.set(true)">Open Drawer</button>
 
         <section sg-drawer [(open)]="drawer">
-            <header sg-drawer-header>
-                <h3>Drawer</h3>
-            </header>
+            <div class="p-5 grid gap-2">
+                <header sg-drawer-header>
+                    <h3>Drawer</h3>
+                </header>
 
-            <section sg-drawer-body>
-                <p>
-                    A drawer (/drɔːr/ DROR) is a box-shaped container inside a piece of furniture
-                    that can be pulled out horizontally to access its contents. Drawers are built
-                    into numerous types of furniture, including cabinets, chests of drawers
-                    (bureaus), desks, and the like.
-                </p>
-            </section>
+                <section sg-drawer-body>
+                    <p>
+                        A drawer (/drɔːr/ DROR) is a box-shaped container inside a piece of
+                        furniture that can be pulled out horizontally to access its contents.
+                        Drawers are built into numerous types of furniture, including cabinets,
+                        chests of drawers (bureaus), desks, and the like.
+                    </p>
+                </section>
 
-            <footer sg-drawer-footer>
-                <button sg-button variant="tertiary" (click)="drawer.set(false)">
-                    Cancel
-                </button>
+                <footer sg-drawer-footer>
+                    <button sg-button variant="tertiary" (click)="drawer.set(false)">Cancel</button>
 
-                <button sg-button (click)="drawer.set(false)">
-                    Continue
-                </button>
-            </footer>
+                    <button sg-button (click)="drawer.set(false)">Continue</button>
+                </footer>
+            </div>
         </section>
     `,
     imports: [Button, Drawer, DrawerHeader, DrawerBody, DrawerFooter],

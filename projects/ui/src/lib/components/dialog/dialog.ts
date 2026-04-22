@@ -4,6 +4,7 @@ import {
     ElementRef,
     HostListener,
     inject,
+    input,
     model,
     OnChanges,
     Renderer2,
@@ -29,6 +30,7 @@ import {
 })
 export class Dialog implements OnChanges {
     public readonly open = model<boolean>(false);
+    public readonly dismissable = input<boolean>(true);
 
     protected readonly panel = viewChild<ElementRef<HTMLElement>>("panel");
 
@@ -57,7 +59,9 @@ export class Dialog implements OnChanges {
         const endedInsidePanel = this.panel()?.nativeElement.contains(event.target as Node);
 
         if (!this.startedInsidePanel() && !endedInsidePanel) {
-            this.close();
+            if (this.dismissable()) {
+                this.close();
+            }
         }
 
         this.startedInsidePanel.set(false);
