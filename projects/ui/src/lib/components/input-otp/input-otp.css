@@ -1,21 +1,13 @@
 @scope ([sg-input-otp], .input-otp) {
     :scope {
-        @apply flex flex-row divide-x! divide-surface-secondary! w-full max-w-md mx-auto justify-center;
+        @apply flex flex-row justify-center gap-x-2 items-center;
     }
 
     input {
-        @apply rounded-none!;
+        @apply text-center block size-full! aspect-square!;
+    }
 
-        &:first-child {
-            @apply rounded-s-field!;
-        }
-
-        &:last-child {
-            @apply rounded-e-field!;
-        }
-
-        &:is(:focus, [data-focused="true"]) {
-            z-index: 1;
-        }
+    .divider {
+        @apply text-muted select-none;
     }
 }

@@ -1,5 +1,16 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { AfterViewInit, Component, ElementRef, forwardRef, input, signal, viewChildren, ViewEncapsulation } from "@angular/core";
+import {
+    AfterViewInit,
+    Component,
+    computed,
+    effect,
+    ElementRef,
+    forwardRef,
+    input,
+    signal,
+    viewChildren,
+    ViewEncapsulation,
+} from "@angular/core";
 
 @Component({
     selector: "sg-input-otp",
@@ -17,12 +28,25 @@ import { AfterViewInit, Component, ElementRef, forwardRef, input, signal, viewCh
     },
 })
 export class InputOtp implements AfterViewInit, ControlValueAccessor {
-    public readonly digits = input<number>(6);
+    public readonly digits = input.required<number>();
     public readonly autoFocus = input<boolean>(false);
 
     protected readonly inputs = viewChildren<ElementRef<HTMLInputElement>>("otpInput");
-    protected readonly values = signal<string[]>(new Array(this.digits()).fill(""));
+    protected readonly values = signal<string[]>([]);
     protected readonly disabled = signal<boolean>(false);
+
+    private readonly value = computed(() => this.values().join(""));
+
+    constructor() {
+        effect(() => {
+            const length = this.digits();
+            this.values.set(new Array(length).fill(""));
+        });
+
+        effect(() => {
+            this.onChange(this.value());
+        });
+    }
 
     public ngAfterViewInit(): void {
         if (this.autoFocus()) {
@@ -64,6 +88,14 @@ export class InputOtp implements AfterViewInit, ControlValueAccessor {
     }
 
     protected onKeydown(event: KeyboardEvent, index: number): void {
+        if (/^\d$/.test(event.key)) {
+            event.preventDefault();
+
+            this.setDigit(index, event.key);
+            this.focus(index + 1);
+            return;
+        }
+
         if (event.key === "Backspace") {
             if (!this.values()[index] && index > 0) {
                 this.focus(index - 1);

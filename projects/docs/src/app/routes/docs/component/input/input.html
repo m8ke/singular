@@ -188,7 +188,7 @@
             </h3>
 
             <section docs-preview [code]="'code'">
-                <div class="flex flex-1 flex-col gap-1 max-w-75">
+                <div class="flex flex-1 flex-col gap-1 max-w-80">
                     <label sg-label for="otp-input">
                         Enter 6-digit code from email
                     </label>
@@ -198,9 +198,9 @@
                         [digits]="6"
                     />
 
-                    <small sg-helper>
-                        Do not share this code with anyone
-                    </small>
+                    <p sg-helper class="text-sm">
+                        Didn't receive a code? <strong class="cursor-pointer underline">Resend</strong>
+                    </p>
                 </div>
             </section>
         </section>
