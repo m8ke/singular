@@ -1,0 +1,5 @@
+@scope ([sg-accordion-body], .accordion-body) {
+    :scope {
+        @apply px-4 pb-4;
+    }
+}

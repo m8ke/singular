@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AccordionContent } from "./accordion-content";
+import { Drawer } from "./drawer";
 
-describe("AccordionContent", () => {
-    let component: AccordionContent;
-    let fixture: ComponentFixture<AccordionContent>;
+describe("Drawer", () => {
+    let component: Drawer;
+    let fixture: ComponentFixture<Drawer>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [AccordionContent],
+            imports: [Drawer],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(AccordionContent);
+        fixture = TestBed.createComponent(Drawer);
         component = fixture.componentInstance;
         await fixture.whenStable();
     });

@@ -12,7 +12,7 @@ import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from "@si
                         {{ item.title }}
                     </header>
 
-                    <div sg-accordion-content>
+                    <div sg-accordion-body>
                         {{ item.content }}
                     </div>
                 </li>

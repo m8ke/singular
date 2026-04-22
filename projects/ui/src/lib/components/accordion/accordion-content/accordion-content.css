@@ -1,5 +1,0 @@
-@scope ([sg-accordion-content], .accordion-content) {
-    :scope {
-        @apply px-4 pb-4;
-    }
-}
