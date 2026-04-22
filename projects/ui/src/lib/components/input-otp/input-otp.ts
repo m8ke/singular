@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, forwardRef, input, OnInit, signal, viewChildren, ViewEncapsulation } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { AfterViewInit, Component, ElementRef, forwardRef, input, signal, viewChildren, ViewEncapsulation } from "@angular/core";
 
 @Component({
     selector: "sg-input-otp",
@@ -13,22 +13,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
         },
     ],
     host: {
-        "[class]": "'input-otp'"
-    }
+        "[class]": "'input-otp'",
+    },
 })
-export class InputOtp implements OnInit, AfterViewInit, ControlValueAccessor {
+export class InputOtp implements AfterViewInit, ControlValueAccessor {
     public readonly digits = input<number>(6);
-    public readonly inputs = viewChildren<ElementRef<HTMLInputElement>>("otpInput");
+    public readonly autoFocus = input<boolean>(false);
 
-    protected readonly values = signal<string[]>([]);
+    protected readonly inputs = viewChildren<ElementRef<HTMLInputElement>>("otpInput");
+    protected readonly values = signal<string[]>(new Array(this.digits()).fill(""));
     protected readonly disabled = signal<boolean>(false);
 
-    public ngOnInit(): void {
-        this.values.set(new Array(this.digits()).fill(""));
-    }
-
     public ngAfterViewInit(): void {
-        this.getInput(0)?.focus();
+        if (this.autoFocus()) {
+            this.getInput(0)?.focus();
+        }
     }
 
     public writeValue(value: string): void {

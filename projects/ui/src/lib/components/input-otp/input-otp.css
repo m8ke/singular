@@ -14,7 +14,7 @@
             @apply rounded-e-field!;
         }
 
-        &:focus {
+        &:is(:focus, [data-focused="true"]) {
             z-index: 1;
         }
     }

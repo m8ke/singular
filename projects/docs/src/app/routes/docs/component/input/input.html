@@ -189,11 +189,12 @@
 
             <section docs-preview [code]="'code'">
                 <div class="flex flex-1 flex-col gap-1 max-w-75">
-                    <label sg-label for="name">
+                    <label sg-label for="otp-input">
                         Enter 6-digit code from email
                     </label>
 
                     <sg-input-otp
+                        id="otp-input"
                         [digits]="6"
                     />
 

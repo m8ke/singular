@@ -66,7 +66,7 @@
     --color-field-hover: color-mix(
         in oklab,
         var(--field-background, var(--default)) 90%,
-        var(--field-foreground, var(--foreground)) 8%
+        var(--field-foreground, var(--foreground)) 4%
     );
 
     --color-field-focus: var(--field-background, var(--default));
