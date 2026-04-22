@@ -14,6 +14,7 @@ import { ComponentInput } from "@/docs/routes/docs/component/input/input";
 import { ComponentLabel } from "@/docs/routes/docs/component/label/label";
 import { ComponentDialog } from "@/docs/routes/docs/component/dialog/dialog";
 import { ComponentTooltip } from "@/docs/routes/docs/component/tooltip/tooltip";
+import { ComponentDrawer } from "@/docs/routes/docs/component/drawer/drawer";
 
 export const routes: Routes = [
     {
@@ -63,6 +64,11 @@ export const routes: Routes = [
                         path: "dialog",
                         component: ComponentDialog,
                         title: "Dialog",
+                    },
+                    {
+                        path: "drawer",
+                        component: ComponentDrawer,
+                        title: "Drawer",
                     },
                     {
                         path: "input",

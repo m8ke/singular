@@ -1,0 +1,5 @@
+@scope ([sg-drawer-content], .drawer-content) {
+    :scope {
+        @apply flex flex-col gap-2 p-6 h-full;
+    }
+}

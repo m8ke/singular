@@ -1,0 +1,5 @@
+@scope ([sg-drawer-footer], .drawer-footer) {
+    :scope {
+        @apply flex flex-row items-center justify-end gap-2;
+    }
+}

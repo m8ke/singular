@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from "@singular/ui";
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "@singular/ui";
 
 @Component({
     template: `
@@ -10,14 +10,14 @@ import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from "@si
                         {{ item.title }}
                     </header>
 
-                    <div sg-accordion-content>
+                    <article sg-accordion-body>
                         {{ item.content }}
-                    </div>
+                    </article>
                 </li>
             }
         </ul>
     `,
-    imports: [Accordion, AccordionItem, AccordionContent, AccordionHeader],
+    imports: [Accordion, AccordionItem, AccordionBody, AccordionHeader],
 })
 export class AccordionUsage {
     items = [

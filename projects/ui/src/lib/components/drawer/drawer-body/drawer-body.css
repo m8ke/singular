@@ -1,0 +1,5 @@
+@scope ([sg-drawer-body], .drawer-body) {
+    :scope {
+        @apply flex flex-1 gap-2;
+    }
+}

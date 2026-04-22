@@ -5,8 +5,8 @@
 // Components
 export * from "./lib/components/accordion/accordion";
 export * from "./lib/components/accordion/accordion-item/accordion-item";
+export * from "./lib/components/accordion/accordion-body/accordion-body";
 export * from "./lib/components/accordion/accordion-header/accordion-header";
-export * from "./lib/components/accordion/accordion-content/accordion-content";
 
 export * from "./lib/components/breadcrumb/breadcrumb";
 export * from "./lib/components/breadcrumb/breadcrumb-item/breadcrumb-item";
@@ -14,6 +14,12 @@ export * from "./lib/components/breadcrumb/breadcrumb-item/breadcrumb-item";
 export * from "./lib/components/button/button";
 
 export * from "./lib/components/dialog/dialog";
+
+export * from "./lib/components/drawer/drawer";
+export * from "./lib/components/drawer/drawer-body/drawer-body";
+export * from "./lib/components/drawer/drawer-header/drawer-header";
+export * from "./lib/components/drawer/drawer-footer/drawer-footer";
+export * from "./lib/components/drawer/drawer-content/drawer-content";
 
 export * from "./lib/components/helper/helper";
 export * from "./lib/components/input/input";
