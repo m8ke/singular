@@ -7,7 +7,6 @@ import { Component, DOCUMENT, effect, HostListener, inject, input, model, ViewEn
     host: {
         "[class]": "'dialog'",
         "[class.open]": "open()",
-        "[class.close]": "!open()",
     },
 })
 export class Dialog {
