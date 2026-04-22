@@ -1,12 +1,5 @@
-<div
-    #panel
-    class="content"
-    [class.opacity-100]="open()"
-    [class.scale-100]="open()"
-    [class.translate-y-0]="open()"
-    [class.opacity-0]="!open()"
-    [class.scale-95]="!open()"
-    [class.translate-y-4]="!open()"
-    (click)="onDialogClick($event)">
-    <ng-content />
+<div class="backdrop" (click)="onBackdropClick()"></div>
+
+<div class="content">
+    <ng-content/>
 </div>

@@ -20,8 +20,8 @@ import {
     templateUrl: "./dialog.html",
     encapsulation: ViewEncapsulation.None,
     host: {
-        "(click)": "onHostClick($event)",
         "[class]": "'dialog'",
+        "[class.open]": "open()",
         "[class.opacity-0]": "!open()",
         "[class.opacity-100]": "open()",
         "[class.pointer-events-none]": "!open()",
@@ -32,11 +32,8 @@ export class Dialog implements OnChanges {
     public readonly open = model<boolean>(false);
     public readonly dismissable = input<boolean>(true);
 
-    protected readonly panel = viewChild<ElementRef<HTMLElement>>("panel");
-
     private readonly document: Document = inject(DOCUMENT);
     private readonly renderer: Renderer2 = inject(RendererFactory2).createRenderer(null, null);
-    private readonly startedInsidePanel = signal<boolean>(false);
 
     public ngOnChanges(changes: SimpleChanges<Dialog>): void {
         if (changes.open?.currentValue) {
@@ -46,27 +43,10 @@ export class Dialog implements OnChanges {
         }
     }
 
-    protected onDialogClick(event: MouseEvent): void {
-        event.stopPropagation();
-    }
-
-    protected onHostClick(event: MouseEvent): void {
-        const endedInsidePanel = this.panel()?.nativeElement.contains(event.target as Node);
-
-        if (!this.startedInsidePanel() && !endedInsidePanel) {
-            if (this.dismissable()) {
-                this.open.set(false);
-            }
+    protected onBackdropClick(): void {
+        if (this.dismissable()) {
+            this.open.set(false);
         }
-
-        this.startedInsidePanel.set(false);
-    }
-
-    @HostListener("document:mousedown", ["$event"])
-    protected onMouseDown(event: MouseEvent): void {
-        this.startedInsidePanel.set(
-            this.panel()?.nativeElement.contains(event.target as Node) ?? false,
-        );
     }
 
     @HostListener("document:keydown.escape")

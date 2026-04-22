@@ -30,9 +30,8 @@ export class Drawer implements OnChanges {
     public readonly dismissable = input<boolean>(true);
     public readonly placement = input<"top" | "right" | "bottom" | "left">("right");
 
-    private readonly rendererFactory = inject(RendererFactory2);
     private readonly document: Document = inject(DOCUMENT);
-    private readonly renderer: Renderer2 = this.rendererFactory.createRenderer(null, null);
+    private readonly renderer: Renderer2 = inject(RendererFactory2).createRenderer(null, null);
 
     public ngOnChanges(changes: SimpleChanges<Drawer>): void {
         if (changes.open?.currentValue) {
