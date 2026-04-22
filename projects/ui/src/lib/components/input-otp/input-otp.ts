@@ -26,17 +26,13 @@ export class InputOtp implements AfterViewInit, ControlValueAccessor {
 
     public ngAfterViewInit(): void {
         if (this.autoFocus()) {
-            this.getInput(0)?.focus();
+            this.focus(0);
         }
     }
 
     public writeValue(value: string): void {
-        console.log(value);
-        if (value) {
-            this.values.set(value.split("").slice(0, this.digits()));
-        } else {
-            this.values.set(new Array(this.digits()).fill(""));
-        }
+        const digits: string[] = value.replace(/\D/g, "").slice(0, this.digits()).split("");
+        this.values.set(Array.from({ length: this.digits() }, (_, i) => digits[i] ?? ""));
     }
 
     public registerOnChange(fn: any): void {
@@ -45,10 +41,6 @@ export class InputOtp implements AfterViewInit, ControlValueAccessor {
 
     public registerOnTouched(fn: any): void {
         this.onTouched = fn;
-    }
-
-    public setDisabledState(isDisabled: boolean): void {
-        this.disabled.set(isDisabled);
     }
 
     protected onChange = (value: string): void => {};
@@ -72,61 +64,50 @@ export class InputOtp implements AfterViewInit, ControlValueAccessor {
     }
 
     protected onKeydown(event: KeyboardEvent, index: number): void {
-        const input = event.target as HTMLInputElement;
-
-        if (/^\d$/.test(event.key)) {
-            event.preventDefault();
-
-            this.updateValue(index, event.key);
-            input.value = event.key;
-
-            this.onTouched();
-            this.onChange(this.values().join(""));
-
-            if (index < this.digits() - 1) {
-                this.getInput(index + 1)?.focus();
+        if (event.key === "Backspace") {
+            if (!this.values()[index] && index > 0) {
+                this.focus(index - 1);
             }
 
+            this.setDigit(index, "");
             return;
         }
 
         if (event.key === "ArrowLeft" && index > 0) {
             event.preventDefault();
-            this.getInput(index - 1)?.focus();
+            this.focus(index - 1);
             return;
         }
 
         if (event.key === "ArrowRight" && index < this.digits() - 1) {
             event.preventDefault();
-            this.getInput(index + 1)?.focus();
+            this.focus(index + 1);
             return;
-        }
-
-        if (event.key === "Backspace" && !this.values().at(index) && index > 0) {
-            this.getInput(index - 1)?.focus();
         }
     }
 
     protected onPaste(event: ClipboardEvent): void {
         event.preventDefault();
 
-        const pasted: string = event.clipboardData?.getData("text") ?? "";
+        const digits: string[] = (event.clipboardData?.getData("text") ?? "").replace(/\D/g, "").slice(0, this.digits()).split("");
 
-        const digits: string[] = pasted.replace(/\D/g, "").slice(0, this.digits()).split("");
+        this.values.set(Array.from({ length: this.digits() }, (_, i) => digits[i] ?? ""));
 
-        digits.forEach((digit, index) => {
-            this.updateValue(index, digit);
-            const input = this.getInput(index);
+        this.focus(digits.length - 1);
+    }
 
-            if (input) {
-                input.value = digit;
-            }
+    private setDigit(index: number, digit: string): void {
+        this.values.update((arr) => {
+            const next = [...arr];
+            next[index] = digit;
+            return next;
         });
 
-        this.onChange(this.values().join(""));
+        this.onTouched();
+    }
 
-        const focusIndex: number = Math.min(digits.length, this.digits() - 1);
-        this.getInput(focusIndex)?.focus();
+    private focus(index: number): void {
+        this.inputs()?.at(index)?.nativeElement.focus();
     }
 
     private getInput(index: number): HTMLInputElement | null {
