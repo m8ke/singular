@@ -15,6 +15,8 @@ import { ComponentLabel } from "@/docs/routes/docs/component/label/label";
 import { ComponentDialog } from "@/docs/routes/docs/component/dialog/dialog";
 import { ComponentTooltip } from "@/docs/routes/docs/component/tooltip/tooltip";
 import { ComponentDrawer } from "@/docs/routes/docs/component/drawer/drawer";
+import { ComponentTable } from "@/docs/routes/docs/component/table/table";
+import { ComponentTab } from "@/docs/routes/docs/component/tab/tab";
 
 export const routes: Routes = [
     {
@@ -84,6 +86,16 @@ export const routes: Routes = [
                         path: "spinner",
                         component: ComponentSpinner,
                         title: "Spinner",
+                    },
+                    {
+                        path: "tabs",
+                        component: ComponentTab,
+                        title: "Tabs",
+                    },
+                    {
+                        path: "table",
+                        component: ComponentTable,
+                        title: "Table",
                     },
                     {
                         path: "tooltip",
