@@ -1,19 +1,17 @@
 @reference "tailwindcss";
 
-@scope (main) {
-    .guide {
-        @apply inline-flex flex-col w-full gap-8;
+.guide {
+    @apply inline-flex flex-col w-full gap-8;
 
-        > header {
-            @apply inline-flex flex-col gap-2;
-        }
+    > header {
+        @apply inline-flex flex-col gap-2;
+    }
+
+    > section {
+        @apply inline-flex flex-col gap-8;
 
         > section {
-            @apply inline-flex flex-col gap-8;
-
-            > section {
-                @apply inline-flex flex-col gap-4;
-            }
+            @apply inline-flex flex-col gap-4;
         }
     }
 }

@@ -2,12 +2,19 @@ import { Component, input, ViewEncapsulation } from "@angular/core";
 
 import { Spinner } from "../spinner/spinner";
 import { Size, Variant } from "../component-type";
+import { RouterLinkActive } from "@angular/router";
 
 @Component({
-    selector: "button[sg-button]",
+    selector: "button[sg-button], a[sg-button]",
     imports: [Spinner],
     templateUrl: "./button.html",
     encapsulation: ViewEncapsulation.None,
+    hostDirectives: [
+        {
+            directive: RouterLinkActive,
+            inputs: ["routerLinkActiveOptions"],
+        },
+    ],
     host: {
         "[class]": "'button'",
         "[class.size-sm]": "size() === 'sm'",
@@ -21,7 +28,7 @@ import { Size, Variant } from "../component-type";
         "[class.variant-outline]": "variant() === 'outline'",
         "[class.radius-full]": "radius() === 'full'",
         "[class.icon]": "isIcon()",
-        "[disabled]": "disabled() || pending()",
+        "[class.disabled]": "disabled() || pending()",
         "[attr.aria-disabled]": "disabled()",
         "[attr.aria-busy]": "pending()",
     },

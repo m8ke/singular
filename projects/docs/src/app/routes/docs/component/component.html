@@ -8,6 +8,7 @@
             @for (route of getRoutePaths(); track route.path) {
                 <li [routerLink]="route.path"
                     routerLinkActive="bg-surface-secondary text-foreground!"
+                    class="text-!"
                     [routerLinkActiveOptions]="{ exact: true }">
                     {{ route.title }}
                 </li>
