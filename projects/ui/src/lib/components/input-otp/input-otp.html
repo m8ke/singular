@@ -1,0 +1,15 @@
+@for (value of values(); track $index) {
+    <input
+        #otpInput
+        [id]="$index"
+        [value]="value"
+        (input)="onInput($event, $index)"
+        (paste)="onPaste($event)"
+        (keydown)="onKeydown($event, $index)"
+        [disabled]="disabled()"
+        type="text"
+        pattern="[0-9]*"
+        autocomplete="one-time-code"
+        class="input text-center text-[115%] block w-full h-12!"
+    />
+}
