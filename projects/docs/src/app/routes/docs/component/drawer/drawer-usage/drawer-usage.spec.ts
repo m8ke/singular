@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { DrawerUsage } from "./drawer-usage";
 
-describe("DropdownUsage", () => {
+describe("DrawerUsage", () => {
     let component: DrawerUsage;
     let fixture: ComponentFixture<DrawerUsage>;
 
