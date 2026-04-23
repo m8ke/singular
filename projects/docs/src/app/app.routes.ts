@@ -17,6 +17,7 @@ import { ComponentTooltip } from "@/docs/routes/docs/component/tooltip/tooltip";
 import { ComponentDrawer } from "@/docs/routes/docs/component/drawer/drawer";
 import { ComponentTable } from "@/docs/routes/docs/component/table/table";
 import { ComponentTab } from "@/docs/routes/docs/component/tab/tab";
+import { ComponentDropdown } from "@/docs/routes/docs/component/dropdown/dropdown";
 
 export const routes: Routes = [
     {
@@ -71,6 +72,11 @@ export const routes: Routes = [
                         path: "drawer",
                         component: ComponentDrawer,
                         title: "Drawer",
+                    },
+                    {
+                        path: "dropdown",
+                        component: ComponentDropdown,
+                        title: "Dropdown",
                     },
                     {
                         path: "input",

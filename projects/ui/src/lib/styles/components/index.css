@@ -22,6 +22,11 @@
 @import "./../../components/drawer/drawer-footer/drawer-footer.css";
 @import "./../../components/drawer/drawer-content/drawer-content.css";
 
+@import "./../../components/dropdown/dropdown.css";
+@import "./../../components/dropdown/dropdown-body/dropdown-body.css";
+@import "./../../components/dropdown/dropdown-item/dropdown-item.css";
+@import "./../../components/dropdown/dropdown-divider/dropdown-divider.css";
+
 @import "./../../components/helper/helper.css";
 
 @import "./../../components/input/input.css";
