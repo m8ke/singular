@@ -16,6 +16,21 @@ export class DropdownNodeDirective {
         const parentNode = this.parentNode;
         if (parentNode) {
             effect(() => {
+                if (this.node.open()) {
+                    parentNode.activateChild(this.node);
+                    return;
+                }
+
+                parentNode.clearChild(this.node);
+            });
+
+            effect(() => {
+                if (parentNode.activeChild() !== this.node && this.node.open()) {
+                    this.node.close();
+                }
+            });
+
+            effect(() => {
                 if (!parentNode.open()) {
                     this.node.close();
                 }
