@@ -20,7 +20,7 @@
 
         > .content {
             @apply relative select-text overflow-y-auto
-            bg-white text-black rounded-3xl shadow
+            rounded-3xl bg-overlay shadow-overlay
             max-w-xl w-full max-h-[90vh] mx-5
             transform transition duration-300
             opacity-0 scale-95 translate-y-4;

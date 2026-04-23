@@ -119,7 +119,7 @@
     --color-danger-soft-hover: color-mix(in oklab, var(--danger) 20%, transparent);
 
     /* ─────────────────────────────
-     * Borders & separators
+     * Borders, outlines & separators
      * ───────────────────────────── */
     --color-separator-secondary: color-mix(in oklab, var(--surface) 85%, var(--surface-foreground) 15%);
     --color-separator-tertiary: color-mix(in oklab, var(--surface) 81%, var(--surface-foreground) 19%);
