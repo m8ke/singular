@@ -1,5 +1,5 @@
 import { Directive, effect, inject } from "@angular/core";
-import { DropdownNodeService } from "./dropdown-node-service";
+import { DropdownNodeService } from "./dropdown-node.service";
 
 @Directive({
     selector: "[sg-dropdown-node]",

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, effect, inject, input, signal, ViewEncapsulation } from "@angular/core";
-import { DropdownNodeService } from "./dropdown-node/dropdown-node-service";
+import { DropdownNodeService } from "./dropdown-node/dropdown-node.service";
+import { DropdownRegistryService } from "./dropdown-registry.service";
 
 @Component({
     selector: "[sg-dropdown]",
@@ -8,32 +9,30 @@ import { DropdownNodeService } from "./dropdown-node/dropdown-node-service";
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        "role": "menu",
+        role: "menu",
         "[attr.data-position]": "position()",
         "(document:click)": "node.close()",
     },
 })
 export class Dropdown {
-    private static readonly activeRootId = signal<string | null>(null);
-
     public readonly position = input<string>("bottom span-right");
     protected readonly node = inject(DropdownNodeService);
+
+    private readonly registry = inject(DropdownRegistryService);
     private readonly dropdownId = crypto.randomUUID();
 
     public constructor() {
-        effect((): void => {
+        effect(() => {
             if (this.node.open()) {
-                Dropdown.activeRootId.set(this.dropdownId);
+                this.registry.activate(this.dropdownId);
                 return;
             }
 
-            if (Dropdown.activeRootId() === this.dropdownId) {
-                Dropdown.activeRootId.set(null);
-            }
+            this.registry.clear(this.dropdownId);
         });
 
-        effect((): void => {
-            const activeDropdownId = Dropdown.activeRootId();
+        effect(() => {
+            const activeDropdownId = this.registry.activeDropdownId();
             if (activeDropdownId !== this.dropdownId && this.node.open()) {
                 this.node.close();
             }

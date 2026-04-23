@@ -1,5 +1,5 @@
 import { Directive, inject } from "@angular/core";
-import { DropdownNodeService } from "../dropdown-node/dropdown-node-service";
+import { DropdownNodeService } from "../dropdown-node/dropdown-node.service";
 
 @Directive({
     selector: "[sg-dropdown-overlay]",

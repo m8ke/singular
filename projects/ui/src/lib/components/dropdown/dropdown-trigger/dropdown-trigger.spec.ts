@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { DropdownTrigger } from "./dropdown-trigger";
-import { DropdownNodeService } from "../dropdown-node/dropdown-node-service";
+import { DropdownNodeService } from "../dropdown-node/dropdown-node.service";
 
 describe("DropdownTrigger", () => {
     it("should create an instance", () => {
