@@ -5,7 +5,7 @@ import { Injectable, signal } from "@angular/core";
 })
 export class DropdownRegistryService {
     private readonly activeId = signal<string | null>(null);
-    public readonly activeDropdownId = this.activeId.asReadonly();
+    private readonly activeDropdownId = this.activeId.asReadonly();
 
     public activate(id: string): void {
         this.activeId.set(id);
@@ -15,5 +15,9 @@ export class DropdownRegistryService {
         if (this.activeId() === id) {
             this.activeId.set(null);
         }
+    }
+
+    public getActiveDropdownId(): string | null {
+        return this.activeDropdownId();
     }
 }

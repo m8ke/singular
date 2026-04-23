@@ -1,11 +1,12 @@
 import { Injectable, signal } from "@angular/core";
 
-@Injectable()
+@Injectable({
+    providedIn: "root",
+})
 export class DropdownNodeService {
     private readonly isOpen = signal<boolean>(false);
-    private readonly activeChildNode = signal<DropdownNodeService | null>(null);
-
     public readonly open = this.isOpen.asReadonly();
+    private readonly activeChildNode = signal<DropdownNodeService | null>(null);
     public readonly activeChild = this.activeChildNode.asReadonly();
 
     public toggle(): void {

@@ -6,9 +6,9 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        "[class]": "'dropdown-divider'",
-        role: "separator",
+        "role": "separator",
         "aria-orientation": "horizontal",
+        "[class]": "'dropdown-divider'",
     },
 })
 export class DropdownDivider {}

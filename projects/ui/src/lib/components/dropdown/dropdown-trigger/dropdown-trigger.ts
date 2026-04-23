@@ -4,7 +4,7 @@ import { DropdownNodeService } from "../dropdown-node/dropdown-node.service";
 @Directive({
     selector: "[sg-dropdown-trigger]",
     host: {
-        tabindex: "0",
+        "[tabindex]": "0",
         "[attr.aria-haspopup]": "'menu'",
         "[attr.aria-expanded]": "node.open()",
         "(click)": "onClick($event)",

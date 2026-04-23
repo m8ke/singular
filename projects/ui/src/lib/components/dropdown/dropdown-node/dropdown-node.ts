@@ -9,8 +9,8 @@ import { DropdownNodeService } from "./dropdown-node.service";
     },
 })
 export class DropdownNodeDirective {
-    private readonly node = inject(DropdownNodeService);
-    private readonly parentNode = inject(DropdownNodeService, { optional: true, skipSelf: true });
+    protected readonly node = inject(DropdownNodeService);
+    protected readonly parentNode = inject(DropdownNodeService, { optional: true, skipSelf: true });
 
     public constructor() {
         const parentNode = this.parentNode;

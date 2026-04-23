@@ -7,7 +7,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, input, ViewEncaps
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         role: "menuitem",
-        tabindex: "0",
+        "[tabindex]": "0",
         "[class]": "'dropdown-item'",
         "(click)": "onItemClick($event)",
     },

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input, signal, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, effect, inject, input, ViewEncapsulation } from "@angular/core";
 import { DropdownNodeService } from "./dropdown-node/dropdown-node.service";
 import { DropdownRegistryService } from "./dropdown-registry.service";
 
@@ -9,7 +9,7 @@ import { DropdownRegistryService } from "./dropdown-registry.service";
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        role: "menu",
+        "role": "menu",
         "[attr.data-position]": "position()",
         "(document:click)": "node.close()",
     },
@@ -17,7 +17,6 @@ import { DropdownRegistryService } from "./dropdown-registry.service";
 export class Dropdown {
     public readonly position = input<string>("bottom span-right");
     protected readonly node = inject(DropdownNodeService);
-
     private readonly registry = inject(DropdownRegistryService);
     private readonly dropdownId = crypto.randomUUID();
 
@@ -32,7 +31,7 @@ export class Dropdown {
         });
 
         effect(() => {
-            const activeDropdownId = this.registry.activeDropdownId();
+            const activeDropdownId = this.registry.getActiveDropdownId();
             if (activeDropdownId !== this.dropdownId && this.node.open()) {
                 this.node.close();
             }
