@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 
 import {
     Button,
@@ -9,6 +9,7 @@ import {
     DropdownNodeDirective,
     DropdownOverlay,
     DropdownTrigger,
+    Theme,
 } from "@singular/ui";
 
 @Component({
@@ -23,12 +24,42 @@ import {
                     <div sg-dropdown-item>Notifications</div>
 
                     <div sg-dropdown-node>
-                        <div sg-dropdown-trigger sg-dropdown-item>Appearance</div>
+                        <div sg-dropdown-trigger sg-dropdown-item>
+                            Appearance
+                            <span sg-dropdown-indicator>&rsaquo;</span>
+                        </div>
 
                         <div sg-dropdown-overlay>
                             <div sg-dropdown-body>
-                                <div sg-dropdown-item [closeOnSelect]="false">Light</div>
-                                <div sg-dropdown-item [closeOnSelect]="false">Dark</div>
+                                <div sg-dropdown-item [closeOnSelect]="false" (click)="theme.setTheme('light')">Light</div>
+                                <div sg-dropdown-item [closeOnSelect]="false" (click)="theme.setTheme('dark')">Dark</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div sg-dropdown-node>
+                        <div sg-dropdown-trigger sg-dropdown-item>
+                            Click here
+                            <span sg-dropdown-indicator>&rsaquo;</span>
+                        </div>
+
+                        <div sg-dropdown-overlay>
+                            <div sg-dropdown-body>
+                                <div sg-dropdown-item [closeOnSelect]="false">No, next one</div>
+
+                                <div sg-dropdown-node>
+                                    <div sg-dropdown-trigger sg-dropdown-item>
+                                        Oh no!
+                                        <span sg-dropdown-indicator>&rsaquo;</span>
+                                    </div>
+
+                                    <div sg-dropdown-overlay>
+                                        <div sg-dropdown-body>
+                                            <div sg-dropdown-item [closeOnSelect]="false">Yep</div>
+                                            <div sg-dropdown-item [closeOnSelect]="false">Scary</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -42,4 +73,6 @@ import {
     `,
     imports: [Dropdown, DropdownBody, DropdownItem, DropdownTrigger, DropdownDivider, DropdownNodeDirective, DropdownOverlay, Button],
 })
-export class DropdownUsage {}
+export class DropdownUsage {
+    protected readonly theme = inject(Theme);
+}

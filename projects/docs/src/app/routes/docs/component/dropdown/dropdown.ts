@@ -5,8 +5,8 @@ import { LayoutSection } from "@/docs/ui/layout/layout-section/layout-section";
 import { DropdownUsage } from "@/docs/routes/docs/component/dropdown/dropdown-usage/dropdown-usage";
 
 @Component({
-    styleUrl: "./drawer.css",
-    templateUrl: "./drawer.html",
+    styleUrl: "./dropdown.css",
+    templateUrl: "./dropdown.html",
     imports: [LayoutSection],
 })
 export class ComponentDropdown {

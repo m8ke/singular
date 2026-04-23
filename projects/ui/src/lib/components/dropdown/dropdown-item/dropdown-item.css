@@ -2,4 +2,9 @@
     :scope {
         @apply flex cursor-pointer items-center gap-2 rounded-2xl px-3 py-2 transition-colors hover:bg-surface-tertiary;
     }
+
+    .dropdown-indicator,
+    [sg-dropdown-indicator] {
+        @apply ml-auto;
+    }
 }
