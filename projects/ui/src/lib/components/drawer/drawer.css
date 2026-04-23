@@ -7,7 +7,7 @@
         }
 
         .content {
-            @apply fixed z-100 bg-overlay shadow-lg overflow-y-auto
+            @apply fixed z-100 bg-overlay shadow-overlay overflow-y-auto
             transition-[transform] duration-300;
 
             --x: 0;
