@@ -1,9 +1,2 @@
-<ng-content select="[dropdown-trigger]"/>
-
-<div
-    popover
-    #panel
-    [id]="id()"
-    [style.position-area]="position()">
-    <ng-content select="[sg-dropdown-body]"/>
-</div>
+<ng-content select="[sg-dropdown-trigger]"></ng-content>
+<ng-content select="[sg-dropdown-overlay]"></ng-content>

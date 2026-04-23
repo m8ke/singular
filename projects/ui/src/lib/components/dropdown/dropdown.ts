@@ -1,23 +1,42 @@
-import { Component, ElementRef, input, signal, ViewChild, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, effect, inject, input, signal, ViewEncapsulation } from "@angular/core";
+import { DropdownNodeService } from "./dropdown-node/dropdown-node-service";
 
-/**
- * TODO: Add custom overlay due to lack of support for other HTML elements but <button>
- */
 @Component({
-    selector: "[app-dropdown]",
+    selector: "[sg-dropdown]",
     templateUrl: "./dropdown.html",
+    providers: [DropdownNodeService],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        "[class]": "'dropdown'",
+        "role": "menu",
+        "[attr.data-position]": "position()",
+        "(document:click)": "node.close()",
     },
 })
 export class Dropdown {
-    public readonly position = input<string>("bottom span-right"); // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-area
-    public readonly id = signal(crypto.randomUUID());
+    private static readonly activeRootId = signal<string | null>(null);
 
-    @ViewChild("panel", { static: true }) private panel!: ElementRef<HTMLElement>;
+    public readonly position = input<string>("bottom span-right");
+    protected readonly node = inject(DropdownNodeService);
+    private readonly dropdownId = crypto.randomUUID();
 
-    public close(): void {
-        this.panel.nativeElement.hidePopover();
+    public constructor() {
+        effect((): void => {
+            if (this.node.open()) {
+                Dropdown.activeRootId.set(this.dropdownId);
+                return;
+            }
+
+            if (Dropdown.activeRootId() === this.dropdownId) {
+                Dropdown.activeRootId.set(null);
+            }
+        });
+
+        effect((): void => {
+            const activeDropdownId = Dropdown.activeRootId();
+            if (activeDropdownId !== this.dropdownId && this.node.open()) {
+                this.node.close();
+            }
+        });
     }
 }

@@ -1,14 +1,28 @@
-import { Directive, ElementRef, inject } from "@angular/core";
-import { Dropdown } from "../dropdown";
+import { Directive, inject } from "@angular/core";
+import { DropdownNodeService } from "../dropdown-node/dropdown-node-service";
 
 @Directive({
-    selector: "[dropdown-trigger]",
+    selector: "[sg-dropdown-trigger]",
+    host: {
+        tabindex: "0",
+        "[attr.aria-haspopup]": "'menu'",
+        "[attr.aria-expanded]": "node.open()",
+        "(click)": "onClick($event)",
+        "(keydown.enter)": "onClick($event)",
+        "(keydown.space)": "onSpace($event)",
+    },
 })
 export class DropdownTrigger {
-    private readonly dropdown = inject(Dropdown);
-    private readonly element = inject(ElementRef<HTMLElement>);
+    protected readonly node = inject(DropdownNodeService);
 
-    public constructor() {
-        this.element.nativeElement.setAttribute("popovertarget", this.dropdown.id());
+    public onClick(event: Event): void {
+        event.stopPropagation();
+        this.node.toggle();
+    }
+
+    public onSpace(event: Event): void {
+        event.preventDefault();
+        event.stopPropagation();
+        this.node.toggle();
     }
 }

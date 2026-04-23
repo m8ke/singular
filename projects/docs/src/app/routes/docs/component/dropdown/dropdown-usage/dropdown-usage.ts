@@ -1,26 +1,45 @@
-import { Component, signal } from "@angular/core";
+import { Component } from "@angular/core";
 
-import { Button, Dropdown, DropdownBody, DropdownDivider, DropdownItem, DropdownTrigger } from "@singular/ui";
+import {
+    Button,
+    Dropdown,
+    DropdownBody,
+    DropdownDivider,
+    DropdownItem,
+    DropdownNodeDirective,
+    DropdownOverlay,
+    DropdownTrigger,
+} from "@singular/ui";
 
 @Component({
     template: `
-        <div app-dropdown position="bottom span-right">
-            <button sg-button dropdown-trigger>Account</button>
+        <div sg-dropdown position="bottom span-right">
+            <button sg-button sg-dropdown-trigger>Account</button>
 
-            <ul sg-dropdown-body>
-                <li sg-dropdown-item>Profile</li>
-                <li sg-dropdown-item>Settings</li>
-                <li sg-dropdown-item>Notifications</li>
-                <li sg-dropdown-item>Switch to light</li>
+            <div sg-dropdown-overlay>
+                <div sg-dropdown-body>
+                    <div sg-dropdown-item>Profile</div>
+                    <div sg-dropdown-item>Settings</div>
+                    <div sg-dropdown-item>Notifications</div>
 
-                <hr sg-dropdown-divider />
+                    <div sg-dropdown-node>
+                        <div sg-dropdown-trigger sg-dropdown-item>Appearance</div>
 
-                <li sg-dropdown-item [closeOnAction]="true">Log out</li>
-            </ul>
+                        <div sg-dropdown-overlay>
+                            <div sg-dropdown-body>
+                                <div sg-dropdown-item [closeOnSelect]="false">Light</div>
+                                <div sg-dropdown-item [closeOnSelect]="false">Dark</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div sg-dropdown-divider></div>
+
+                    <div sg-dropdown-item>Log out</div>
+                </div>
+            </div>
         </div>
     `,
-    imports: [Dropdown, DropdownBody, DropdownItem, DropdownDivider, DropdownTrigger, Button],
+    imports: [Dropdown, DropdownBody, DropdownItem, DropdownTrigger, DropdownDivider, DropdownNodeDirective, DropdownOverlay, Button],
 })
-export class DropdownUsage {
-    protected readonly drawer = signal<boolean>(false);
-}
+export class DropdownUsage {}

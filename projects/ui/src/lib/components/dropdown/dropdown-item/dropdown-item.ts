@@ -1,22 +1,23 @@
-import { Component, HostListener, inject, input, ViewEncapsulation } from "@angular/core";
-import { Dropdown } from "../dropdown";
+import { booleanAttribute, ChangeDetectionStrategy, Component, input, ViewEncapsulation } from "@angular/core";
 
 @Component({
     selector: "[sg-dropdown-item]",
     templateUrl: "./dropdown-item.html",
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        role: "menuitem",
+        tabindex: "0",
         "[class]": "'dropdown-item'",
+        "(click)": "onItemClick($event)",
     },
 })
 export class DropdownItem {
-    public readonly closeOnAction = input<boolean>(false);
-    private readonly dropdown = inject(Dropdown, { optional: true });
+    public readonly closeOnSelect = input<boolean, boolean | string>(true, { transform: booleanAttribute });
 
-    @HostListener("click")
-    protected onClick(): void {
-        if (this.closeOnAction() && this.dropdown) {
-            this.dropdown.close();
+    public onItemClick(event: MouseEvent): void {
+        if (!this.closeOnSelect()) {
+            event.stopPropagation();
         }
     }
 }

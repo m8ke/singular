@@ -1,31 +1,101 @@
 @scope ([sg-dropdown], .dropdown) {
-    [popover] {
-        opacity: 0;
-        transform: scale(0.97);
-        transform-origin: top left;
-        transition: opacity 0.1s ease-in-out, transform 0.3s ease-in-out, display 0.3s allow-discrete, overlay 0.3s allow-discrete;
-        position-anchor: auto;
-        background-color: unset;
-        overflow: visible;
+    :scope {
+        @apply relative inline-block;
+        --dropdown-enter-duration: 180ms;
+        --dropdown-exit-duration: 120ms;
+        --dropdown-enter-ease: cubic-bezier(0.16, 1, 0.3, 1);
+        --dropdown-exit-ease: cubic-bezier(0.4, 0, 1, 1);
+        --dropdown-transition-in:
+            opacity var(--dropdown-enter-duration) var(--dropdown-enter-ease),
+            transform var(--dropdown-enter-duration) var(--dropdown-enter-ease),
+            visibility 0s linear 0s;
+        --dropdown-transition-out:
+            opacity var(--dropdown-exit-duration) var(--dropdown-exit-ease),
+            transform var(--dropdown-exit-duration) var(--dropdown-exit-ease),
+            visibility 0s linear var(--dropdown-exit-duration);
     }
 
-    [popover]:popover-open {
-        opacity: 1;
-        transform: scale(1);
+    & > [sg-dropdown-overlay] {
+        @apply absolute z-50 min-w-full;
     }
 
-    @starting-style {
-        [popover]:popover-open {
-            transform: scale(0.97);
+    [sg-dropdown-overlay] {
+        @apply block pointer-events-auto opacity-100 visible origin-top-left;
+        transform: translate3d(0, 0, 0) scale(1);
+        transition: var(--dropdown-transition-in);
+        will-change: transform, opacity;
+    }
+
+    [sg-dropdown-overlay][data-state="closed"] {
+        @apply pointer-events-none opacity-0 invisible;
+        transition: var(--dropdown-transition-out);
+    }
+
+    &[data-position*="bottom"] > [sg-dropdown-overlay] {
+        @apply top-full origin-top;
+    }
+
+    &[data-position*="bottom"] > [sg-dropdown-overlay][data-state="closed"] {
+        transform: translate3d(0, -0.25rem, 0) scale(0.98);
+    }
+
+    &[data-position*="top"] > [sg-dropdown-overlay] {
+        @apply bottom-full origin-bottom;
+    }
+
+    &[data-position*="top"] > [sg-dropdown-overlay][data-state="closed"] {
+        transform: translate3d(0, 0.25rem, 0) scale(0.98);
+    }
+
+    &[data-position*="span-right"] > [sg-dropdown-overlay] {
+        @apply left-0 right-auto;
+    }
+
+    &[data-position*="span-left"] > [sg-dropdown-overlay] {
+        @apply right-0 left-auto;
+    }
+
+    [sg-dropdown-node] {
+        @apply relative;
+    }
+
+    [sg-dropdown-node] > [sg-dropdown-overlay] {
+        @apply static z-51 w-full overflow-hidden origin-top-left;
+        max-height: 70svh;
+        margin-top: 0.25rem;
+        padding-left: 0.5rem;
+        transition:
+            max-height var(--dropdown-enter-duration) var(--dropdown-enter-ease),
+            margin-top var(--dropdown-enter-duration) var(--dropdown-enter-ease),
+            padding-left var(--dropdown-enter-duration) var(--dropdown-enter-ease),
+            var(--dropdown-transition-in);
+    }
+
+    [sg-dropdown-node] > [sg-dropdown-overlay][data-state="closed"] {
+       @apply max-h-0 mt-0 pl-0;
+        transform: translate3d(0, -0.2rem, 0) scale(0.98);
+        transition:
+            max-height var(--dropdown-exit-duration) var(--dropdown-exit-ease),
+            margin-top var(--dropdown-exit-duration) var(--dropdown-exit-ease),
+            padding-left var(--dropdown-exit-duration) var(--dropdown-exit-ease),
+            var(--dropdown-transition-out);
+    }
+
+    @media (min-width: 48rem) {
+        [sg-dropdown-node] > [sg-dropdown-overlay] {
+            @apply absolute w-max overflow-visible top-0 max-h-none mt-0 pl-0;
+            left: calc(100% + 0.25rem);
+        }
+
+        [sg-dropdown-node] > [sg-dropdown-overlay][data-state="closed"] {
+            transform: translate3d(-0.25rem, 0, 0) scale(0.98);
         }
     }
 
-    /* TODO: Multi dropdown */
-    [popover] [popover] {
-        position-area: span-end end;
-    }
-
-    [popover].position-area-left [popover] {
-        position-area: span-end start;
+    @media (prefers-reduced-motion: reduce) {
+        [sg-dropdown-overlay],
+        [sg-dropdown-node] > [sg-dropdown-overlay] {
+            @apply transition-none!;
+        }
     }
 }

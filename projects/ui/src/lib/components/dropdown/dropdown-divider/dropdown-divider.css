@@ -1,5 +1,5 @@
 @scope ([sg-dropdown-divider], .dropdown-divider) {
     :scope {
-        @apply border-0 outline-0 h-px bg-border w-[200%] my-1 ml-[-50%];
+        @apply -mx-1.5 my-1 h-px border-0 bg-border outline-0;
     }
 }

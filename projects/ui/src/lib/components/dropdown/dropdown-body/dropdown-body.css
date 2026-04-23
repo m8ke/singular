@@ -1,5 +1,8 @@
 @scope ([sg-dropdown-body], .dropdown-body) {
     :scope {
-        @apply max-w-[48svw] origin-(--trigger-anchor-point) scroll-py-1 overflow-y-auto overscroll-contain rounded-3xl bg-overlay md:min-w-55 p-1.5 mt-1 shadow-(--shadow-overlay);
+        @apply mt-1 max-h-[70svh] max-w-[48svw] overflow-y-auto overscroll-contain rounded-3xl bg-overlay p-1.5 shadow-(--shadow-overlay) md:min-w-55 md:max-h-none md:overflow-visible;
+        scrollbar-gutter: stable;
+        -webkit-overflow-scrolling: touch;
+        transform-origin: var(--trigger-anchor-point);
     }
 }
