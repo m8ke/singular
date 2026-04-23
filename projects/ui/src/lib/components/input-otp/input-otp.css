@@ -4,7 +4,7 @@
     }
 
     input {
-        @apply text-center block size-full! aspect-square!;
+        @apply text-center block size-full! aspect-square! text-[110%]!;
     }
 
     .divider {

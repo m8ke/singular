@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DrawerUsage } from "./drawer-usage";
+import { ComponentDropdown } from "./dropdown";
 
-describe("DropdownUsage", () => {
-    let component: DrawerUsage;
-    let fixture: ComponentFixture<DrawerUsage>;
+describe("ComponentDropdown", () => {
+    let component: ComponentDropdown;
+    let fixture: ComponentFixture<ComponentDropdown>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [DrawerUsage],
+            imports: [ComponentDropdown],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(DrawerUsage);
+        fixture = TestBed.createComponent(ComponentDropdown);
         component = fixture.componentInstance;
         await fixture.whenStable();
     });

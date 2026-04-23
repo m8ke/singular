@@ -1,0 +1,9 @@
+@scope ([sg-dropdown-item], .dropdown-item) {
+    :scope {
+        @apply flex flex-row items-center gap-x-2 px-3 py-2 rounded-2xl cursor-pointer transition-colors;
+    }
+
+    &:hover {
+        @apply bg-surface-tertiary;
+    }
+}

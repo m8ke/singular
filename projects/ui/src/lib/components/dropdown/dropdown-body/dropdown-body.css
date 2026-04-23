@@ -1,0 +1,5 @@
+@scope ([sg-dropdown-body], .dropdown-body) {
+    :scope {
+        @apply max-w-[48svw] origin-(--trigger-anchor-point) scroll-py-1 overflow-y-auto overscroll-contain rounded-3xl bg-overlay md:min-w-55 p-1.5 mt-1 shadow-(--shadow-overlay);
+    }
+}
